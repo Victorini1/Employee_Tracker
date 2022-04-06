@@ -50,9 +50,9 @@ function startQuestions(){
                 'View All Roles',
                 'View All Employees',
                 'Add a Department',
-                'Add a role',
-                'Add an employee',
-                'Update employee role'
+                'Add a Role',
+                'Add an Employee',
+                'Update an Employee'
             ]}
     ]) .then ((answer) => {
         const {choices} = answer;
@@ -65,9 +65,14 @@ function startQuestions(){
         if (choices === 'View All Employees'){
             viewAllEmployees();
         }
+        if (choices === 'Add a Department')
+            addDepartment();
     })
 }
 
+// Functions to view 
+
+// Shows the department names and the department IDs
 
 function viewAllDepartments(){
     const sql = `SELECT department.id, department.name AS department FROM department`;
@@ -81,6 +86,8 @@ function viewAllDepartments(){
     })
 }
 
+// Should be able to view job title, role id, the department that role belongs to, and the salary for that role
+
 function viewAllRoles(){
     const sql = `SELECT role.id, role.title AS role, role.salary AS salary FROM role`;
     db.query(sql, (err, response) =>{
@@ -93,6 +100,8 @@ function viewAllRoles(){
     })
 }
 
+// Should be able to view employee's first and last names their employee ID, job titles, departments, salaries, and managers that the employees report to
+
 function viewAllEmployees(){
     const sql = `SELECT employee.first_name AS first_name, employee.last_name AS last_name FROM employee`
     db.query(sql, (err, response) =>{
@@ -104,6 +113,39 @@ function viewAllEmployees(){
         }
     })
 }
+
+// ADD functions
+
+function addDepartment(){
+    inquirer.prompt ([
+        {
+            name: 'addDepartment',
+            type: 'input',
+            message: "What is the name of this department?"
+        }
+    ])
+    // Question Marks can be used as value placeholders
+        .then((response) => {
+            let add = `INSERT INTO department (name) VALUES(?)`
+            db.query(add, response.addDepartment, (err, res) =>{
+                if (err){
+                    console.log(err)
+                }else {
+                    console.log(`${response.addDepartment} was created successfully!`)
+                    viewAllDepartments();
+                }
+            })
+        })
+}
+
+function addRole(){
+
+}
+
+function addEmployee(){
+
+}
+
 
 
 startQuestions();
