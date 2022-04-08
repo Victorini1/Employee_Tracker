@@ -10,6 +10,10 @@
   ## Installation Instructions
   NPM Inquirer, express, and and mysql2 are needed to view the database and run queries.
   
+  ## Video of working Database
+  
+  https://drive.google.com/file/d/1C5Sxa_1vfD8QrvBZP95j9MAnWulKGhxk/view?usp=sharing
+  
   ## Questions
   For questions, contact me via <a href="mailto:victor.m.kennedy@gmail.com">email</a>.
   Find me on <a href="https://github.com/Victorini1">GitHub</a>
